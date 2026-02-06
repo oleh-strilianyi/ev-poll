@@ -13,6 +13,7 @@ import {
   verticalListSortingStrategy,
   arrayMove,
 } from '@dnd-kit/sortable';
+import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 import type { Participant } from '../../types/participant';
 import { ParticipantItem } from './ParticipantItem';
 
@@ -25,7 +26,7 @@ export const ParticipantList = ({ items, onReorder }: ParticipantListProps) => {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 5,
+        distance: 8, 
       },
     }),
     useSensor(KeyboardSensor, {
@@ -49,6 +50,7 @@ export const ParticipantList = ({ items, onReorder }: ParticipantListProps) => {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
+      modifiers={[restrictToWindowEdges]}
     >
       <SortableContext
         items={items}
