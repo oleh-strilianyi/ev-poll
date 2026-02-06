@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware' // createJSONStorage опціонально, але корисно знати
+import { persist } from 'zustand/middleware'
 import type { Participant } from '../types/participant'
 import { mockParticipants } from '../data/mockParticipants'
 
