@@ -1,16 +1,15 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { ParticipantList } from '../components/participants/ParticipantList';
+import { mockParticipants } from '../data/mockParticipants';
 
 export const Route = createFileRoute('/')({
   component: Index,
-})
+});
 
 function Index() {
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">Participants List</h2>
-      <div className="p-4 border rounded bg-gray-50 text-center">
-        Список учасників буде тут
-      </div>
+    <div className="min-h-screen bg-gray-50 pb-20">
+      <ParticipantList items={mockParticipants} />
     </div>
-  )
+  );
 }
