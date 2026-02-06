@@ -33,12 +33,11 @@ export const ParticipantItem = ({ data }: ParticipantItemProps) => {
       <button
         {...attributes}
         {...listeners}
-        className="touch-none cursor-grab active:cursor-grabbing p-1 text-gray-400 hover:text-gray-600"
+        className="touch-none cursor-grab active:cursor-grabbing p-1 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded"
         aria-label="Reorder"
       >
         <DragHandleIcon />
       </button>
-
       <div className="flex-1 font-medium text-gray-800">
         {data.name}
       </div>

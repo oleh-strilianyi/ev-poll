@@ -39,7 +39,7 @@ export const ParticipantList = ({ items, onReorder }: ParticipantListProps) => {
     if (over && active.id !== over.id) {
       const oldIndex = items.findIndex((item) => item.id === active.id);
       const newIndex = items.findIndex((item) => item.id === over.id);
-
+      
       onReorder(arrayMove(items, oldIndex, newIndex));
     }
   };
