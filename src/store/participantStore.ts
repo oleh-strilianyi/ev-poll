@@ -8,7 +8,7 @@ interface ParticipantState {
   setParticipants: (participants: Participant[]) => void
 }
 
-const CURRENT_STORE_VERSION = 6;
+const CURRENT_STORE_VERSION = 7;
 
 export const useParticipantStore = create<ParticipantState>()(
   persist(

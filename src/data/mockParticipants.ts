@@ -32,11 +32,6 @@ export const mockParticipants: Participant[] = [
     imageId: 'the-elliens-crawling-whispers_promo-photo-1_fpey96' 
   },
   { 
-    id: '9', 
-    name: 'Jerry Heil', 
-    imageId: '588400974_18545936539023826_4106266668199910576_n_tkfrlj' 
-  },
-  { 
     id: '8', 
     name: 'Khayat', 
     imageId: '63n3ki-d6b17491735c8f05cf64631a8e3bec5f_edkoao' 
@@ -50,5 +45,10 @@ export const mockParticipants: Participant[] = [
     id: '10', 
     name: 'ЩукаРиба', 
     imageId: '000017230021-1024x679_spqs0c' 
+  },
+  { 
+    id: '9', 
+    name: 'Jerry Heil', 
+    imageId: '588400974_18545936539023826_4106266668199910576_n_tkfrlj' 
   },
 ];
