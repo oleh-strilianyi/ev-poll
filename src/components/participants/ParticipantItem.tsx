@@ -39,8 +39,8 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     return 'border-gray-200 bg-white';
   };
 
-  const handleInputFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
-    const card = e.target.closest('[data-participant-card]');
+  const handleInputInteraction = (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+    const card = e.currentTarget.closest('[data-participant-card]');
     
     setTimeout(() => {
       card?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -52,7 +52,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       ref={setNodeRef}
       style={style}
       data-participant-card
-      className={`scroll-mb-2 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg shadow-sm transition-colors ${getRankStyles(index)}`}
+      className={`scroll-mb-14 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg shadow-sm transition-colors ${getRankStyles(index)}`}
     >
       <button
         {...attributes}
@@ -95,7 +95,8 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
           placeholder="Коментар..."
           value={data.comment || ''}
           onChange={(e) => updateParticipant(data.id, { comment: e.target.value })}
-          onFocus={handleInputFocus}
+          onFocus={handleInputInteraction}
+          onClick={handleInputInteraction}
           maxLength={140}
           onPointerDown={(e) => e.stopPropagation()}
         />
