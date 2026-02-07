@@ -45,17 +45,6 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       style={style}
       className={`relative flex items-stretch gap-2 p-2 border rounded-xl shadow-sm transition-colors ${getRankStyles(index)}`}
     >
-      <div className="flex items-center justify-center">
-        <button
-          {...attributes}
-          {...listeners}
-          className="cursor-grab active:cursor-grabbing p-1 text-gray-400 hover:text-gray-600 focus:outline-none rounded touch-none shrink-0"
-          aria-label="Reorder"
-        >
-          <DragHandleIcon />
-        </button>
-      </div>
-
       <div className="relative shrink-0">
         <div className="w-24 h-[72px] rounded overflow-hidden bg-gray-100 border border-gray-100">
           {imageUrl ? (
@@ -93,6 +82,17 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
           maxLength={140}
           onPointerDown={(e) => e.stopPropagation()}
         />
+      </div>
+
+      <div className="flex items-center justify-center">
+        <button
+          {...attributes}
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing p-1 text-gray-400 hover:text-gray-600 focus:outline-none rounded touch-none shrink-0"
+          aria-label="Reorder"
+        >
+          <DragHandleIcon />
+        </button>
       </div>
     </div>
   );
