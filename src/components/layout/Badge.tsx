@@ -7,13 +7,11 @@ interface BadgeProps {
 }
 
 export const Badge = ({ children, className = '', variant = 'default' }: BadgeProps) => {
-  // Базові стилі для всіх бейджів
-  const baseStyles = "inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wide pointer-events-none";
+  const baseStyles = "inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[12px] font-bold tracking-wide pointer-events-none";
   
-  // Варіанти стилізації
   const variantStyles = variant === 'overlay'
-    ? "bg-black/60 text-white backdrop-blur-[2px] border border-white/10" // Для накладання на фото
-    : "bg-gray-100 text-gray-600 border border-gray-200"; // Звичайний (сірий)
+    ? "bg-black/60 text-white backdrop-blur-[2px] border border-white/10" 
+    : "bg-gray-100 text-gray-600 border border-gray-200"; 
 
   return (
     <div className={`${baseStyles} ${variantStyles} ${className}`}>
