@@ -9,7 +9,7 @@ interface ParticipantState {
   updateParticipant: (id: string, changes: Partial<Participant>) => void
 }
 
-const CURRENT_STORE_VERSION = 8; 
+const CURRENT_STORE_VERSION = 9; 
 
 export const useParticipantStore = create<ParticipantState>()(
   persist(
