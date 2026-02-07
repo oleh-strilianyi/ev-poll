@@ -39,6 +39,12 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     return 'border-gray-200 bg-white';
   };
 
+  const handleInputFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    setTimeout(() => {
+      e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -48,7 +54,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       <button
         {...attributes}
         {...listeners}
-        className="absolute left-0 top-0 bottom-0 w-6 z-20 opacity-0 cursor-grab active:cursor-grabbing touch-none"
+        className="absolute left-0 top-0 bottom-0 w-8 z-20 opacity-0 cursor-grab active:cursor-grabbing touch-none"
         aria-label="Drag Handle Left"
       />
 
@@ -86,6 +92,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
           placeholder="Коментар..."
           value={data.comment || ''}
           onChange={(e) => updateParticipant(data.id, { comment: e.target.value })}
+          onFocus={handleInputFocus}
           maxLength={140}
           onPointerDown={(e) => e.stopPropagation()}
         />
