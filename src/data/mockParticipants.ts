@@ -1,17 +1,7 @@
 import type { Participant } from '../types/participant';
 
 export const mockParticipants: Participant[] = [
-  { 
-    id: '9', 
-    name: 'Jerry Heil', 
-    imageId: '588400974_18545936539023826_4106266668199910576_n_tkfrlj' 
-  },
-  { 
-    id: '8', 
-    name: 'Khayat', 
-    imageId: '63n3ki-d6b17491735c8f05cf64631a8e3bec5f_edkoao' 
-  },
-  { 
+    { 
     id: '5', 
     name: 'Laud', 
     imageId: '800x800cc_lffyyx' 
@@ -40,6 +30,16 @@ export const mockParticipants: Participant[] = [
     id: '4', 
     name: 'The Elliens', 
     imageId: 'the-elliens-crawling-whispers_promo-photo-1_fpey96' 
+  },
+  { 
+    id: '9', 
+    name: 'Jerry Heil', 
+    imageId: '588400974_18545936539023826_4106266668199910576_n_tkfrlj' 
+  },
+  { 
+    id: '8', 
+    name: 'Khayat', 
+    imageId: '63n3ki-d6b17491735c8f05cf64631a8e3bec5f_edkoao' 
   },
   { 
     id: '1', 
