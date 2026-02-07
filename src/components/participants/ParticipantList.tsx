@@ -56,9 +56,13 @@ export const ParticipantList = ({ items, onReorder }: ParticipantListProps) => {
         items={items}
         strategy={verticalListSortingStrategy}
       >
-        <div className="flex flex-col gap-2 w-full max-w-md mx-auto p-4">
-          {items.map((item) => (
-            <ParticipantItem key={item.id} data={item} />
+        <div className="flex flex-col gap-3 w-full max-w-md mx-auto p-4 pb-20">
+          {items.map((item, index) => (
+            <ParticipantItem 
+              key={item.id} 
+              data={item} 
+              index={index}
+            />
           ))}
         </div>
       </SortableContext>
