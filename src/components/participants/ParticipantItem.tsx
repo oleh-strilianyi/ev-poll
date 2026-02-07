@@ -40,15 +40,18 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
   };
 
   const handleInputFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    const card = e.target.closest('[data-participant-card]');
+    
     setTimeout(() => {
-      e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
+      card?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 400);
   };
 
   return (
     <div
       ref={setNodeRef}
       style={style}
+      data-participant-card
       className={`relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg shadow-sm transition-colors ${getRankStyles(index)}`}
     >
       <button
