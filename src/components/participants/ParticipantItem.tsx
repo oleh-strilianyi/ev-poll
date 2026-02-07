@@ -3,7 +3,8 @@ import { CSS } from '@dnd-kit/utilities';
 import type { Participant } from '../../types/participant';
 import { DragHandleIcon } from '../icons/DragHandleIcon';
 import { getParticipantImageUrl } from '../../utils/imageUtils';
-import { Badge } from '../layout/Badge'; // Перевір шлях до компонента Badge
+import { Badge } from '../layout/Badge';
+import { useParticipantStore } from '../../store/participantStore';
 
 interface ParticipantItemProps {
   data: Participant;
@@ -11,6 +12,8 @@ interface ParticipantItemProps {
 }
 
 export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
+  const updateParticipant = useParticipantStore((state) => state.updateParticipant);
+
   const {
     attributes,
     listeners,
@@ -40,19 +43,20 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative flex items-center gap-3 p-3 border rounded-xl shadow-sm touch-none transition-colors ${getRankStyles(index)}`}
+      className={`relative flex items-stretch gap-2 p-2 border rounded-xl shadow-sm touch-none transition-colors ${getRankStyles(index)}`}
     >
-      <button
-        {...attributes}
-        {...listeners}
-        className="cursor-grab active:cursor-grabbing p-2 text-gray-400 hover:text-gray-600 focus:outline-none rounded touch-none shrink-0"
-        aria-label="Reorder"
-      >
-        <DragHandleIcon />
-      </button>
+      <div className="flex items-center justify-center">
+        <button
+          {...attributes}
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing p-1 text-gray-400 hover:text-gray-600 focus:outline-none rounded touch-none shrink-0"
+          aria-label="Reorder"
+        >
+          <DragHandleIcon />
+        </button>
+      </div>
 
       <div className="relative shrink-0">
-        {/* Повернув оригінальні розміри для прямокутного формату */}
         <div className="w-24 h-[72px] rounded overflow-hidden bg-gray-100 border border-gray-100">
           {imageUrl ? (
             <img 
@@ -70,14 +74,25 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
         </div>
       </div>
 
-      <div className="flex-1 min-w-0 flex items-center gap-2">
-        <Badge variant="default" className="shrink-0">
-          #{data.id}
-        </Badge>
-        
-        <div className="font-bold text-gray-800 text-lg truncate leading-tight">
-          {data.name}
+      <div className="flex-1 min-w-0 flex flex-col justify-between">
+        <div className="flex items-center gap-2 pt-0.5">
+          <Badge variant="default" className="shrink-0 scale-90 origin-left">
+            #{data.id}
+          </Badge>
+          
+          <div className="font-bold text-gray-800 text-sm truncate leading-tight">
+            {data.name}
+          </div>
         </div>
+
+        <textarea
+          className="w-full h-[46px] resize-none text-[11px] leading-3 bg-white/50 border border-gray-200 rounded px-1.5 py-1 focus:outline-none focus:border-blue-300 focus:bg-white text-gray-600 placeholder:text-gray-300"
+          placeholder="Коментар..."
+          value={data.comment || ''}
+          onChange={(e) => updateParticipant(data.id, { comment: e.target.value })}
+          maxLength={140}
+          onPointerDown={(e) => e.stopPropagation()}
+        />
       </div>
     </div>
   );
