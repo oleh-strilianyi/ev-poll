@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { Participant } from '../../types/participant';
@@ -14,7 +14,6 @@ interface ParticipantItemProps {
 
 export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
   const updateParticipant = useParticipantStore((state) => state.updateParticipant);
-  const [isCopied, setIsCopied] = useState(false);
   const pressTimer = useRef<number | null>(null);
 
   const {
@@ -55,10 +54,8 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     pressTimer.current = window.setTimeout(() => {
       navigator.clipboard.writeText(data.name).then(() => {
         if (navigator.vibrate) navigator.vibrate(50);
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 800);
       }).catch(() => {});
-    }, 600);
+    }, 1000);
   };
 
   const handlePressCancel = () => {
