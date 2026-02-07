@@ -52,7 +52,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       ref={setNodeRef}
       style={style}
       data-participant-card
-      className={`scroll-mb-14 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg shadow-sm transition-colors ${getRankStyles(index)}`}
+      className={`scroll-mb-4 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg shadow-sm transition-colors ${getRankStyles(index)}`}
     >
       <button
         {...attributes}
