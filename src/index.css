@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply min-h-screen transition-colors duration-300 selection:bg-purple-500 selection:text-white;
+    @apply min-h-screen selection:bg-purple-500 selection:text-white;
     @apply bg-neutral-100 text-slate-900;
     @apply dark:bg-slate-900 dark:text-slate-100;
   }

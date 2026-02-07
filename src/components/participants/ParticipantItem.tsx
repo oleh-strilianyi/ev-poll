@@ -56,7 +56,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       navigator.clipboard.writeText(data.name).then(() => {
         if (navigator.vibrate) navigator.vibrate(50);
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
+        setTimeout(() => setIsCopied(false), 800);
       }).catch(() => {});
     }, 600);
   };
@@ -107,7 +107,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
           </Badge>
           
           <div 
-            className={`font-bold text-lg truncate leading-none pt-0.5 select-none transition-colors duration-300 ${isCopied ? 'text-green-600 dark:text-green-500' : 'text-neutral-900 dark:text-slate-100'}`}
+            className="font-bold text-lg truncate leading-none pt-0.5 select-none transition-colors duration-300 text-neutral-900 dark:text-slate-100"
             onPointerDown={handlePressStart}
             onPointerUp={handlePressCancel}
             onPointerLeave={handlePressCancel}
