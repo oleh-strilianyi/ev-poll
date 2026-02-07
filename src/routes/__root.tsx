@@ -8,19 +8,26 @@ export const Route = createRootRoute({
   component: RootComponent,
 })
 
-function RootComponent() {
+
+function ThemeEffect() {
   const isDarkMode = useSettingsStore((state) => state.isDarkMode)
 
   useEffect(() => {
+    const root = document.documentElement
     if (isDarkMode) {
-      document.documentElement.classList.add('dark')
+      root.classList.add('dark')
     } else {
-      document.documentElement.classList.remove('dark')
+      root.classList.remove('dark')
     }
   }, [isDarkMode])
 
+  return null
+}
+
+function RootComponent() {
   return (
     <DesktopBlocker>
+      <ThemeEffect />
       <Header />
       <main className="container mx-auto p-4 flex-1">
         <Outlet />
