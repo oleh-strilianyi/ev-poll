@@ -43,7 +43,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative flex items-stretch gap-2 p-2 border rounded-xl shadow-sm touch-none transition-colors ${getRankStyles(index)}`}
+      className={`relative flex items-stretch gap-2 p-2 border rounded-xl shadow-sm transition-colors ${getRankStyles(index)}`}
     >
       <div className="flex items-center justify-center">
         <button
