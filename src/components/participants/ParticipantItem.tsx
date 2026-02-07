@@ -33,13 +33,11 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
   const imageUrl = getParticipantImageUrl(data.imageId);
 
   const getRankStyles = (rankIndex: number) => {
-    // Всі картки тепер мають bg-white. Кольори обводки залишаються для топ-3.
-    if (rankIndex === 0) return 'border-yellow-400 ring-1 ring-yellow-400 bg-white shadow-sm';
-    if (rankIndex === 1) return 'border-neutral-400 ring-1 ring-neutral-400 bg-white shadow-sm';
-    if (rankIndex === 2) return 'border-amber-700 ring-1 ring-amber-700 bg-white shadow-sm';
+    if (rankIndex === 0) return 'border-yellow-400 ring-1 ring-yellow-400 shadow-[0_2px_8px_-1px_rgba(250,204,21,0.4)] z-10';
+    if (rankIndex === 1) return 'border-slate-400 ring-1 ring-slate-400 shadow-[0_2px_8px_-1px_rgba(148,163,184,0.4)] z-10';
+    if (rankIndex === 2) return 'border-amber-700 ring-1 ring-amber-700 shadow-[0_2px_8px_-1px_rgba(180,83,9,0.3)] z-10';
     
-    // Стандартний стиль
-    return 'border-neutral-200 bg-white shadow-sm';
+    return 'border-neutral-200 shadow-sm hover:border-neutral-300';
   };
 
   const handleInputInteraction = (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
@@ -55,7 +53,7 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
       ref={setNodeRef}
       style={style}
       data-participant-card
-      className={`scroll-mb-3 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg transition-colors ${getRankStyles(index)}`}
+      className={`scroll-mb-3 relative flex items-stretch gap-1 pl-1.5 py-1.5 pr-1 border rounded-lg transition-colors bg-white ${getRankStyles(index)}`}
     >
       <button
         {...attributes}
