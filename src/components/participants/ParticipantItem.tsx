@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { Participant } from '../../types/participant';
@@ -13,6 +14,8 @@ interface ParticipantItemProps {
 
 export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
   const updateParticipant = useParticipantStore((state) => state.updateParticipant);
+  const [isCopied, setIsCopied] = useState(false);
+  const pressTimer = useRef<number | null>(null);
 
   const {
     attributes,
@@ -46,6 +49,23 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
     setTimeout(() => {
       card?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 300);
+  };
+
+  const handlePressStart = () => {
+    pressTimer.current = window.setTimeout(() => {
+      navigator.clipboard.writeText(data.name).then(() => {
+        if (navigator.vibrate) navigator.vibrate(50);
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+      }).catch(() => {});
+    }, 600);
+  };
+
+  const handlePressCancel = () => {
+    if (pressTimer.current) {
+      clearTimeout(pressTimer.current);
+      pressTimer.current = null;
+    }
   };
 
   return (
@@ -86,7 +106,13 @@ export const ParticipantItem = ({ data, index }: ParticipantItemProps) => {
             #{data.id}
           </Badge>
           
-          <div className="font-bold text-neutral-900 text-lg truncate leading-none pt-0.5 dark:text-slate-100">
+          <div 
+            className={`font-bold text-lg truncate leading-none pt-0.5 select-none transition-colors duration-300 ${isCopied ? 'text-green-600 dark:text-green-500' : 'text-neutral-900 dark:text-slate-100'}`}
+            onPointerDown={handlePressStart}
+            onPointerUp={handlePressCancel}
+            onPointerLeave={handlePressCancel}
+            onPointerCancel={handlePressCancel}
+          >
             {data.name}
           </div>
         </div>
