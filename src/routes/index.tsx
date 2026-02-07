@@ -10,7 +10,7 @@ function Index() {
   const { participants, setParticipants } = useParticipantStore();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-neutral-100">
       <ParticipantList 
         items={participants} 
         onReorder={setParticipants}
